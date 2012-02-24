@@ -64,19 +64,19 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
         end
         
 #       program = doc.css('a[id="rowTitle1"]').map do |prog1|
-            prog1.text.strip
-        end
+#            prog1.text.strip
+#        end
        episode = doc.css('li[id="row1-1"]').map do |ep|
             ep.text.strip
         end
         
-      =begin  if (tempo.min >= 30 && tempo.min <=55)
-            program1=program[2]
-        end
-        if
-            program1=program[1]
-        end
-        =end
+#        if (tempo.min >= 30 && tempo.min <=55)
+#            program1=program[2]
+#        end
+#        if
+#            program1=program[1]
+#        end
+        
         channel2=channel1[0]
         show = episode[1]
         epi_sode = episode[2]

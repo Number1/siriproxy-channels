@@ -48,15 +48,17 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
         
         if (tempo.min >= 30 && tempo.min <=55)
             program1=program[2]
-        else
+        end
+        if
             program1=program[1]
-        
+        end
         
         channel2=channel1[0]
         
         say "currently playing #{program1} "
         request_completed
-    end
+            end
+    
     
     
 end

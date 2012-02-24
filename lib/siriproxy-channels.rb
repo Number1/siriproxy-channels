@@ -76,10 +76,10 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
         if
             program1=program[1]
         end
-        episode1 = episode[1]
+        
         channel2=channel1[0]
         
-        say "#{program1}: #{episode1} is playing on #{channel2}"
+        say "#{program1}: #{episode} is playing on #{channel2}"
         request_completed
     end
     

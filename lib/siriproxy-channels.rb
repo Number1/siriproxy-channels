@@ -11,4 +11,5 @@ class SiriProxy::Plugin::Example < SiriProxy::Plugin
       say "All is well, Pat"
     
       request_completed
+    end
 end

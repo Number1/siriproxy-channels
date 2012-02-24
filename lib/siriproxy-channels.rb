@@ -50,8 +50,7 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
         end
     end
         
-    listen_for /Whats playing on channel/i do #|number|
-    
-    check_channel(48)
+    listen_for /Whats playing on channel/i do
+    say "Your mom"
     request_completed
 end

@@ -10,8 +10,8 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
     end
       
     
-    listen_for /on channel/i do
-    say "Your mom"
+    listen_for /on channel ([0-9,]*[0-9])/i do |number|
+    say "Checking for what's playing on channel #{number}"
     request_completed
         end
 end

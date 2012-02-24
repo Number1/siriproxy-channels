@@ -11,13 +11,30 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
     tempo = Time.new
     number = 0
     
+    listen_for /on (fox news|history|tru tv)/i do |word|
+    say "Checking for what's playing #{word}"
+    
+    if (word == "fox news")
+        number = 38
+    elsif (word == "history")
+        number = 48
+    elsif (word == "tru tv")
+            number = 40
+    else
+        say "Sorry, I did not recognize your request"
+    end
+        
+    channelCheck(number)
+    
+    end 
+
     listen_for /on channel ([0-9,]*[0-9])/i do |number1|
     say "Checking for what's playing on channel #{number1}"
-    if number1 == "fox news"
-        number1 = 38
-    end
     number = number1.to_i
+    channelCheck(number)
+    end
     
+    def channelCheck(number)
         h = [0, 0, 10780, 10839, 0, 10603, 73442, 21343, 10734, 63705,
         10535, 63823, 10659, 32892, 11069, 46256, 22130, 23325, 
         23326, 22133, 23896, 23897, 10816, 10342, 16715, 11867, 
@@ -56,5 +73,6 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
         request_completed
     end
     
+  end
     
 end

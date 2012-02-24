@@ -47,9 +47,8 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
         
         say "currently playing "
         request_completed
-        
-        
-    end 
+        end
+    end
         
     listen_for /Whats playing on channel/i do #|number|
     

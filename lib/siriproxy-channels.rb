@@ -5,10 +5,7 @@ require'cora'
 require 'pp'
 #stopped at 52
 
-class SiriProxy::Plugin::Channels < SiriProxy::Plugin
-    def initialize(config)
-        #if you have custom configuration options, process them here!
-    end
+
  
 def channel_check(channel)
 
@@ -57,7 +54,7 @@ say "currently playing "
     say "Hi Pat. How are you?"
     request_completed
     #check_channel(number)
-    
+    end
 
-end
+
 

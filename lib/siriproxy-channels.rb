@@ -11,6 +11,7 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
     
     def channel_check(channel)
         
+        say "Checking for what's playing on channel #{number}"
         
         
         h = [0, 0, 10780, 10839, 0, 10603, 73442, 21343, 10734, 63705,
@@ -46,7 +47,7 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
         
         channel2=channel1[0]
         
-        say "currently playing "
+        say "currently playing #{program1} "
         request_completed
     end
 end
@@ -54,6 +55,6 @@ end
     tempo = Time.new
     
     listen_for /on channel ([0-9,]*[0-9])/i do |number|
-    say "Checking for what's playing on channel #{number}"
     channel_check(number)
+        end
 end

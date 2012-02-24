@@ -3,7 +3,7 @@ require 'siri_objects'
 require 'pp'
 
 
-class SiriProxy::Plugin::Example < SiriProxy::Plugin
+class SiriProxy::Plugin::channels < SiriProxy::Plugin
     def initialize(config)
         #if you have custom configuration options, process them here!
     end

@@ -57,8 +57,7 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
         
         say "currently playing #{program1} "
         request_completed
-            end
     
     
     
-$end
+end

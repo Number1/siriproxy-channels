@@ -53,4 +53,5 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
     listen_for /Whats playing on channel/i do
     say "Your mom"
     request_completed
+        end
 end

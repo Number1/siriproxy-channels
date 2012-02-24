@@ -34,7 +34,7 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
         
         channel = h[number]
         
-        uri = "http://tvlistings.zap2it.com/tvlistings/ZCSGrid.do?stnNum=#{chanel}&channel=#{number}"
+        uri = "http://tvlistings.zap2it.com/tvlistings/ZCSGrid.do?stnNum=#{channel}&channel=#{number}"
         doc = Nokogiri::HTML(open(uri))
         
         

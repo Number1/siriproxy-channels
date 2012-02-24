@@ -63,25 +63,25 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
             status.text.strip
         end
         
-#       program = doc.css('a[id="rowTitle1"]').map do |prog1|
-#            prog1.text.strip
-#        end
-       episode = doc.css('li[id="row1-1"]').map do |ep|
+       program = doc.css('a[id="rowTitle1"]').map do |prog1|
+            prog1.text.strip
+        end
+        episode = doc.css('li[id="row1-1"] a[class="zc-ssl-pg-ep"]').map do |ep|
             ep.text.strip
         end
         
-#        if (tempo.min >= 30 && tempo.min <=55)
-#            program1=program[2]
-#        end
-#        if
-#            program1=program[1]
-#        end
+        if (tempo.min >= 30 && tempo.min <=55)
+            program1=program[2]
+        end
+        if
+            program1=program[1]
+        end
         
         channel2=channel1[0]
-        show = episode[1]
-        epi_sode = episode[2]
+        
+        episode1 = episode[0]
 
-        say "#{show}: #{epi_sode} is playing on #{channel2}"
+        say "#{program1}: #{episode1} is playing on #{channel2}"
         request_completed
     end
     

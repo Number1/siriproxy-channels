@@ -50,7 +50,7 @@ say "currently playing "
     #print "channel ", channel, " ", channel2, " ", program1, "\n"
     end ##check_channel
 
-    listen_for /Whats playing on channel ([0-9,]*[0-9])/i do #|number|
+    listen_for /Whats playing on channel/i do #|number|
     say "Hi Pat. How are you?"
     request_completed
     #check_channel(number)

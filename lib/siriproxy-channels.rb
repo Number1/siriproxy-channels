@@ -12,8 +12,8 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
     number = 0
     
     listen_for /on channel ([0-9,]*[0-9])/i do |number1|
-    say "Checking for what's playing on channel #{number}"
-    number = number1
+    say "Checking for what's playing on channel #{number1}"
+    number = number1.to_i
     
         h = [0, 0, 10780, 10839, 0, 10603, 73442, 21343, 10734, 63705,
         10535, 63823, 10659, 32892, 11069, 46256, 22130, 23325, 

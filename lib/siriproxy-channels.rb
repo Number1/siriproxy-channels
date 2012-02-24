@@ -48,9 +48,9 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
         
         if (tempo.min >= 30 && tempo.min <=55)
             program1=program[2]
-            else
+        else
             program1=program[1]
-        end
+        
         
         channel2=channel1[0]
         

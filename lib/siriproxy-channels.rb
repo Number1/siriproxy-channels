@@ -57,4 +57,3 @@ end
     listen_for /on channel ([0-9,]*[0-9])/i do |number|
     channel_check(number)
         end
-end

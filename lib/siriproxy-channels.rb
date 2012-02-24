@@ -8,12 +8,11 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
     def initialize(config = {})
         #if you have custom configuration options, process them here!
     end
-    
     tempo = Time.new
-    
-    listen_for /on channel ([0-9,]*[0-9])/i do |number|
+    number = 0
+    listen_for /on channel ([0-9,]*[0-9])/i do |number1|
     say "Checking for what's playing on channel #{number}"
-    
+    number = number1
     end
     
     

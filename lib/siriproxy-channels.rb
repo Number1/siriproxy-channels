@@ -8,6 +8,7 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
     def initialize(config = {})
         #if you have custom configuration options, process them here!
     end
+    =begin
     def channel_check(channel)
         
         tempo = Time.new
@@ -49,7 +50,7 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
         request_completed
         end
     end
-        
+    =end   
     listen_for /Whats playing on channel/i do
     say "Your mom"
     request_completed

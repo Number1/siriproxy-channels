@@ -12,11 +12,11 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
     tempo = Time.new
     
     listen_for /on channel ([0-9,]*[0-9])/i do |number|
-    channel_check(number)
+    
     end
     
     
-    def channel_check(channel)
+    
         
         say "Checking for what's playing on channel #{number}"
         
@@ -32,9 +32,9 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
         10986, 11218, 18511, 11066, 17098, 11097, 10269, 10051, 
         10093, 11006, 12510, 18151, 10161, 10162, 10380]
         
-        number = h[channel]
+        channel = h[number]
         
-        uri = "http://tvlistings.zap2it.com/tvlistings/ZCSGrid.do?stnNum=#{number}&channel=#{channel}"
+        uri = "http://tvlistings.zap2it.com/tvlistings/ZCSGrid.do?stnNum=#{chanel}&channel=#{number}"
         doc = Nokogiri::HTML(open(uri))
         
         
@@ -57,7 +57,6 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
         say "currently playing #{program1} "
         request_completed
     end
-end
     
     
 end

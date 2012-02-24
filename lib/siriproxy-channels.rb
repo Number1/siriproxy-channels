@@ -11,9 +11,11 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
     
     tempo = Time.new
     number = 0
-    
-    listen_for /on (fox news|history|tru tv)/i do |word|
+    word = ""
+    listen_for /on (fox news|history|tru tv)/i do |word1|
     say "Checking for what's playing #{word}"
+    word = word1
+    word = word.downcase
     
     if (word == "fox news")
         number = 38
@@ -36,7 +38,7 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
     end
     
     def channelCheck(number)
-        h = [0, 0, 10780, 10839, 0, 10603, 73442, 21343, 10734, 63705,
+   h = [0, 0, 10780, 10839, 0, 10603, 73442, 21343, 10734, 63705,
         10535, 63823, 10659, 32892, 11069, 46256, 22130, 23325, 
         23326, 22133, 23896, 23897, 10816, 10342, 16715, 11867, 
         53324, 11221, 10183, 11207, 10918, 10145, 23340, 10179,

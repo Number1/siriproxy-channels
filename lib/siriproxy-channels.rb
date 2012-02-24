@@ -8,6 +8,7 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
     def initialize(config = {})
         #if you have custom configuration options, process them here!
     end
+    
     tempo = Time.new
     number = 0
     
@@ -72,7 +73,5 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
         say "#{program1} is playing on #{channel2}"
         request_completed
     end
-    
-  end
     
 end

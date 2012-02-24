@@ -33,17 +33,17 @@ doc = Nokogiri::HTML(open(uri))
 
 channel1 = doc.css("h1").map do |status|
     status.text.strip
-end
+    end
 
 program = doc.css('a[id="rowTitle1"]').map do |prog1|
     prog1.text.strip
-end
+    end
 
-if (tempo.min >= 30 && tempo.min <=55)
+    if (tempo.min >= 30 && tempo.min <=55)
         program1=program[2]
     else
         program1=program[1]
-end
+    end
 
 channel2=channel1[0]
 
@@ -51,12 +51,13 @@ say "currently playing "
     request_completed
 
     #print "channel ", channel, " ", channel2, " ", program1, "\n"
-end ##check_channel
+    end ##check_channel
 
     listen_for /Whats playing on channel ([0-9,]*[0-9])/i do #|number|
+    say "Hi Pat. How are you?"
+    request_completed
+    #check_channel(number)
     
-    check_channel(number)
-    end
 
 end
 

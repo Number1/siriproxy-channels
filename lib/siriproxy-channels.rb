@@ -12,8 +12,8 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
     tempo = Time.new
     number = 0
     word = ""
-    listen_for /on (fox news|history|tru tv)/i do |word1|
-    say "Checking for what's playing #{word}"
+    listen_for /on (fox news|history|"true" tv)/i do |word1|
+    #say "Checking for what's playing #{word1}"
     word = word1
     word = word.downcase
     

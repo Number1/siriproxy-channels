@@ -2,6 +2,7 @@ require 'siri_objects'
 require 'nokogiri'
 require 'open-uri'
 require'cora'
+require 'pp'
 #stopped at 52
 
 class SiriProxy::Plugin::Channels < SiriProxy::Plugin
@@ -52,7 +53,7 @@ say "currently playing "
     #print "channel ", channel, " ", channel2, " ", program1, "\n"
 end ##check_channel
 
-listen_for /on channel ([0-9,]*[0-9])/i do |number|
+    listen_for /Whats playing on channel ([0-9,]*[0-9])/i do #|number|
     
     check_channel(number)
     end

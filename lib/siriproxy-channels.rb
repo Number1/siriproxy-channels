@@ -1,7 +1,6 @@
-#require 'siri_objects'
+require 'siri_objects'
 require 'nokogiri'
 require 'open-uri'
-require 'pp'
 require'cora'
 #stopped at 52
 

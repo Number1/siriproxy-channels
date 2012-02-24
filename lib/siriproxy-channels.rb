@@ -55,7 +55,7 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
         
         channel2=channel1[0]
         
-        say "currently playing #{program1} "
+#say "currently playing #{program1} "
         request_completed
     
     

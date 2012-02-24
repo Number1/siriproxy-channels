@@ -12,13 +12,14 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
     tempo = Time.new
     
     listen_for /on channel ([0-9,]*[0-9])/i do |number|
+    say "Checking for what's playing on channel #{number}"
     
     end
     
     
     
         
-        say "Checking for what's playing on channel #{number}"
+        
         
         
         h = [0, 0, 10780, 10839, 0, 10603, 73442, 21343, 10734, 63705,

@@ -13,6 +13,9 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
     
     listen_for /on channel ([0-9,]*[0-9])/i do |number1|
     say "Checking for what's playing on channel #{number1}"
+    if number1 == "fox news"
+        number1 = 38
+    end
     number = number1.to_i
     
         h = [0, 0, 10780, 10839, 0, 10603, 73442, 21343, 10734, 63705,
@@ -49,7 +52,7 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
         
         channel2=channel1[0]
         
-        say "currently playing #{program1} "
+        say "#{program1} is playing on #{channel2}"
         request_completed
     end
     

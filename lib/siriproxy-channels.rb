@@ -61,4 +61,4 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
     
     
     
-end
+$end

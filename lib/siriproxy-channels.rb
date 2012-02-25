@@ -13,17 +13,17 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
     number = 0
     word = ""
     
-    listen_for /on ("fox news"|"history"|"true tv"|"spike"
-                    |"comedy central"| "comedy")/i do |word1|
+    listen_for /on (fox news|history|the history channel|history channel|tru tv|
+                    spike|comedy central|comedy)/i do |word1|
     
     word = word1
     word = word.downcase
     
     if (word == "fox news")
          number = 38
-    elsif (word == "history")
+    elsif (word == "history" ||word == "the history channel" ||word == "history channel")
         number = 48
-    elsif (word == "true tv")
+    elsif (word == "tru tv")
             number = 40
     elsif (word == "spike")
             number = 64

@@ -1,0 +1,35 @@
+Plugin allows one to use Siri to search for whats currently playing on Colorado Springs Comcast digital cable.  It uses the zap2it.com guide listings. Thanks to rakusu https://github.com/rakusu/SiriProxy-TV-Control for the ideas that drove this.
+
+requires nokogiri
+
+gem install nokogiri
+
+
+installation:
+
+add 
+    - name: 'Channels'
+      git: 'git://github.com/Number1/siriproxy-channels.git'
+
+to your config.yml in /.siriproxy
+
+
+Usage:
+
+prompt siri and say, what's on channel (whatever).  
+Or what's on Fox News or History.  Currently only works for fox news and the history channel. 
+
+The first numeric method works for all channels.
+
+
+
+To do:  
+
+1. Fix an issue when 30 minute shows still show up even after they're over
+2. Add show description and possibly add episode and channel logo art 
+3. Convert more channels to strings.  e.g. what's playing on Spike, rather than what's
+   playing on channel 66.
+
+tips, tricks, thanks, or complaints can be sent to @pat_orders
+
+

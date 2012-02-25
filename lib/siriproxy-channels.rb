@@ -12,17 +12,23 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
     tempo = Time.new
     number = 0
     word = ""
-    listen_for /on (fox news|history|"true" tv)/i do |word1|
-    #say "Checking for what's playing #{word1}"
+    
+    listen_for /on ("fox news"|"history"|"true tv"|"spike"
+                    |"comedy central"| "comedy")/i do |word1|
+    
     word = word1
     word = word.downcase
     
     if (word == "fox news")
-        number = 38
+         number = 38
     elsif (word == "history")
         number = 48
-    elsif (word == "tru tv")
+    elsif (word == "true tv")
             number = 40
+    elsif (word == "spike")
+            number = 64
+    elsif (word == "comedy central" || word == "comedy")
+            number = 62
     else
         say "Sorry, I did not recognize your request"
     end
@@ -32,7 +38,6 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
     end 
 
     listen_for /on channel ([0-9,]*[0-9])/i do |number1|
-    say "Checking for what's playing on channel #{number1}"
     number = number1.to_i
     channelCheck(number)
     end
@@ -81,7 +86,7 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
         
         episode1 = episode[0]
 
-        say "#{program1}: #{episode1} is playing on #{channel2}"
+        say "#{program1}: #{episode1} is playing on #{channel2}, channel#{number}"
         request_completed
     end
     

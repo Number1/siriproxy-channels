@@ -85,7 +85,7 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
         channel2=channel1[0]
         
         episode1 = episode[0]
-        if number == 65
+        if number <= 69 && number >= 65
             say "You are a fool.  Your broke ass doesn't get #{channel2}"
         else
         say "#{program1}: #{episode1} is playing on #{channel2}, channel #{number}"

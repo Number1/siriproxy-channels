@@ -86,6 +86,11 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
         episode1 = episode[0]
 
         say "#{program1}: #{episode1} is playing on #{channel2}, channel #{number}"
+        response = ask "Would you like to watch #{program1}"
+        if (response == /yes/1)
+            say "Cool"
+        end
+        
         request_completed
     end
     

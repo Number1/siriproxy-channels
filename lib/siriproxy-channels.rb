@@ -14,7 +14,7 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
     number = 0
     word = ""
     
-    listen_for /on (fox news|history|the history channel|history channel|truetv|spike tv|comedy central|comedy)/i do |word1|
+    listen_for /on (the tv|fox news|history|the history channel|history channel|truetv|spike tv|comedy central|comedy)/i do |word1|
     
     word = word1
     word = word.downcase
@@ -29,7 +29,9 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
             number = 64
     elsif (word == "comedy central" || word == "comedy")
             number = 62
-    else
+    elsif (word == "the tv")
+            number = "GotoLiveTV"
+    else 
         say "Sorry, I did not recognize your request"
     end
         
@@ -42,6 +44,8 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
     channelCheck(number)
     end
     
+    listen_for /some (rock) 
+
     def channelCheck(number)
         
         tempo = Time.new

@@ -153,7 +153,7 @@ end
 def controls(var)
     say "As you wish"
     
-    if var == tv 
+    if var == "tv" 
         
         command = "GoToLiveTV"
     end

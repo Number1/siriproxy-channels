@@ -89,6 +89,8 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
         response = ask "Would you like to watch #{program1}"
         if (response == /yes/i)
             say "Cool"
+            else
+            say "That is some bullshit"
         end
         
         request_completed

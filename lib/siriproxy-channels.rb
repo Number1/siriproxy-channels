@@ -86,7 +86,7 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
         
         episode1 = episode[0]
         if number == 65
-            say "You are a fool.  Your broke ass doesn't get #{program1}"
+            say "You are a fool.  Your broke ass doesn't get #{channel2}"
         else
         say "#{program1}: #{episode1} is playing on #{channel2}, channel #{number}"
         response = ask "Would you like to watch #{program1}"

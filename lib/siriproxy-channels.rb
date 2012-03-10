@@ -85,22 +85,24 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
         channel2=channel1[0]
         
         episode1 = episode[0]
-
+        if number == 65
+            say "You are a fool.  Your broke ass doesn't get #{program1}"
+        else
         say "#{program1}: #{episode1} is playing on #{channel2}, channel #{number}"
         response = ask "Would you like to watch #{program1}"
         if (response =~ /yes/i)
-            change_channel number
+            change_channel(number, program1)
             
             
             else
             say "That is some bullshit"
         end
-        
+        end
         request_completed
     end
-def change_channel(number)
+def change_channel(number, program)
     x = 0
-    say "I'm changing the channel to #{number} for you lazy motherfucking ass."
+    say "I'm changing the channel to #{}."
     
     chan_str = number.to_s.split('')
     base = "http://192.168.0.3:9080/xml/"

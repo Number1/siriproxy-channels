@@ -42,7 +42,12 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
     channelCheck(number)
     end
     
-   
+   listen_for /start (tv)/i do |word|
+       
+       word = word1
+       word = word.downcase
+       controls(word)
+       end
 
     def channelCheck(number)
         
@@ -104,7 +109,7 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
     end
 def change_channel(number, program)
     x = 0
-    say "I'm changing the channel to #{}."
+    say "I'm changing the channel to #{number}."
     
     chan_str = number.to_s.split('')
     base = "http://192.168.0.3:9080/xml/"
@@ -144,5 +149,33 @@ def change_channel(number, program)
     
     
 end
+
+def controls(var)
+    say "As you wish"
+    
+    if var == tv 
+        
+        command = "GoToLiveTV"
+    end
+    
+    base = "http://192.168.0.3:9080/xml/"
+    
+    response = HTTParty.get("#{base}login?un=mce&pw=8u88aD0g")
+    
+    tokens = response["loginresponse"]
+    tokens = tokens["token"]
+    tokens = tokens.to_s
+    
+    uri = URI("#{base}sendremotekey/Num#{chan_str[0]}?token=#{tokens}")
+    
+    Net::HTTP.start(uri.host, uri.port) do |http|
+        request = Net::HTTP::Get.new uri.request_uri
+        response = http.request request# Net::HTTPResponse object
+    end
+
+
+
+request_completed 
+
     
 end

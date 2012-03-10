@@ -3,7 +3,8 @@ require 'siri_objects'
 require 'nokogiri'
 require 'open-uri'
 require 'pp'
-
+require 'httparty'
+require 'json'
 class SiriProxy::Plugin::Channels < SiriProxy::Plugin
     def initialize(config = {})
         #if you have custom configuration options, process them here!
@@ -88,12 +89,56 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
         say "#{program1}: #{episode1} is playing on #{channel2}, channel #{number}"
         response = ask "Would you like to watch #{program1}"
         if (response =~ /yes/i)
-            say "Cool"
+            change_channel number
+            
+            
             else
             say "That is some bullshit"
         end
         
         request_completed
     end
+def change_channel(number)
+    x = 0
+    say "I'm changing the channel to: #{number}"
+    
+    chan_str = number.to_s.split('')
+    base = "http://192.168.0.3:9080/xml/"
+    
+    response = HTTParty.get("#{base}login?un=mce&pw=8u88aD0g")
+    
+    tokens = response["loginresponse"]
+    tokens = tokens["token"]
+    tokens = tokens.to_s
+    
+    if chan_str.length > 1
+        while  x < chan_str.length
+            uri = URI("#{base}sendremotekey/Num#{chan_str[x]}?token=#{tokens}") 
+            
+            #print chan_str.length
+            
+            Net::HTTP.start(uri.host, uri.port) do |http|
+                request = Net::HTTP::Get.new uri.request_uri
+                response = http.request request# Net::HTTPResponse object
+                
+            end
+            x = x+1
+        end
+        else
+        
+        uri = URI("#{base}sendremotekey/Num#{chan_str[0]}?token=#{tokens}")
+        
+        Net::HTTP.start(uri.host, uri.port) do |http|
+            request = Net::HTTP::Get.new uri.request_uri
+            response = http.request request# Net::HTTPResponse object
+        end
+    end
+    
+    
+    request_completed 
+    
+    
+    
+end
     
 end

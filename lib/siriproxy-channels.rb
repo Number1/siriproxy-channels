@@ -166,7 +166,7 @@ def controls(var)
     tokens = tokens["token"]
     tokens = tokens.to_s
     
-    uri = URI("#{base}sendremotekey/Num#{chan_str[0]}?token=#{tokens}")
+    uri = URI("#{base}sendremotekey/#{command}?token=#{tokens}")
     
     Net::HTTP.start(uri.host, uri.port) do |http|
         request = Net::HTTP::Get.new uri.request_uri
@@ -176,6 +176,6 @@ def controls(var)
 
 
 request_completed 
-
+end
     
 end

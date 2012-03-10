@@ -29,7 +29,7 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
             number = 64
     elsif (word == "comedy central" || word == "comedy")
             number = 62
-    else 
+    else
         say "Sorry, I did not recognize your request"
     end
         
@@ -42,7 +42,7 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
     channelCheck(number)
     end
     
-    listen_for /some (rock) 
+   
 
     def channelCheck(number)
         

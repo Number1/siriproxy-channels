@@ -100,7 +100,7 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
     end
 def change_channel(number)
     x = 0
-    say "I'm changing the channel to: #{number}"
+    say "I'm changing the channel to #{number} for you lazy motherfucking ass."
     
     chan_str = number.to_s.split('')
     base = "http://192.168.0.3:9080/xml/"

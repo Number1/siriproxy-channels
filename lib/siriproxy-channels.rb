@@ -42,7 +42,7 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
     channelCheck(number)
     end
     
-   listen_for /start (tv)/i do |word|
+   listen_for /start (tv)/i do |word1|
        
        word = word1
        word = word.downcase

@@ -43,8 +43,9 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
     end
 
     listen_for /to number ([0-9,]*[0-9])/i do |number1|
-        #number = number1.to_i
-    change_channel number 
+        number = "Num" + number1
+        
+     commands(number) 
     end
     
    listen_for /media center (tv|menu|music|stop|skip|previous)/i do |word1|

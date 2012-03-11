@@ -42,7 +42,7 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
     channelCheck(number)
     end
     
-   listen_for /start (tv)/i do |word1|
+   listen_for /start (tv|media center)/i do |word1|
        
        word = word1
        word = word.downcase
@@ -157,6 +157,8 @@ def controls(var)
         
         command = "GoToLiveTV"
     end
+    if var == "media center"
+        command = "Menu"
     
     base = "http://192.168.0.3:9080/xml/"
     

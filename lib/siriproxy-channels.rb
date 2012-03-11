@@ -42,7 +42,7 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
     channelCheck(number)
     end
     
-   listen_for /start (tv|media center|living room music)/i do |word1|
+   listen_for /start (tv|media center|media center music|media center stop)/i do |word1|
        
        word = word1
        word = word.downcase
@@ -160,7 +160,7 @@ def controls(var)
     if var == "media center"
         commands("Menu")
     end
-    if var == "living room music"
+    if var == "media center music"
     command = ["GoToMusic", "NavRight", "NavRight", "NavDown", "Play" ]
         x = 0
         while x< command.length
@@ -168,6 +168,9 @@ def controls(var)
             x = x + 1
         end
       end
+    if var == "media center stop"
+        commands("Stop")
+    end
     
 end
 

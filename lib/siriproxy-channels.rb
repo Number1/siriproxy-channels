@@ -41,6 +41,11 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
     number = number1.to_i
     channelCheck(number)
     end
+
+    listen_for /to number ([0-9,]*[0-9])/i do |number1|
+        #number = number1.to_i
+    change_channel number 
+    end
     
    listen_for /media center (tv|menu|music|stop|skip|previous)/i do |word1|
        
@@ -98,7 +103,7 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
         say "#{program1}: #{episode1} is playing on #{channel2}, channel #{number}"
         response = ask "Would you like to watch #{program1}"
         if (response =~ /yes/i)
-            change_channel(number, program1)
+            change_channel(number)
             
             
             else
@@ -107,7 +112,7 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
         end
         request_completed
     end
-def change_channel(number, program)
+def change_channel(number)
     x = 0
     say "I'm changing the channel to #{number}."
     

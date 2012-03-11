@@ -159,7 +159,7 @@ def controls(var)
     end
     if var == "media center"
         command = "Menu"
-    
+    end
     base = "http://192.168.0.3:9080/xml/"
     
     response = HTTParty.get("#{base}login?un=mce&pw=8u88aD0g")

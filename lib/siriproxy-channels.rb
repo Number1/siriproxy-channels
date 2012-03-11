@@ -42,7 +42,7 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
     channelCheck(number)
     end
     
-   listen_for /media center (tv|menu|music|stop)/i do |word1|
+   listen_for /media center (tv|menu|music|stop|skip|previous)/i do |word1|
        
        word = word1
        word = word.downcase
@@ -171,7 +171,12 @@ def controls(var)
     if var == "stop"
         commands("Stop")
     end
-    
+    if var == "skip"
+        commands("SkipFwd")
+    end
+    if var == "previous"
+        commands("SkipBack")
+    end
 end
 
 def commands(command)

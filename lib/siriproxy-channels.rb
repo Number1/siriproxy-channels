@@ -151,16 +151,17 @@ def change_channel(number, program)
 end
 
 def controls(var)
-    say "As you wish"
+    
     
     if var == "tv" 
-        
+        say "Turning on Live Tv."
         commands("GoToLiveTV")
     end
     if var == "menu"
         commands("Menu")
     end
     if var == "music"
+        say "Playing some kick-ass rock."
     command = ["GoToMusic", "NavRight", "NavRight", "NavDown", "Play" ]
         x = 0
         while x< command.length
@@ -172,9 +173,11 @@ def controls(var)
         commands("Stop")
     end
     if var == "skip"
+        say "Skipping forward"
         commands("SkipFwd")
     end
     if var == "previous"
+        say "Skipping back"
         commands("SkipBack")
     end
 end

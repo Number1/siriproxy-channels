@@ -43,7 +43,7 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
     end
 
     listen_for /to number ([0-9,]*[0-9])/i do |number1|
-        number = "Num" + number1
+        number = "Num" + number1.to_s
         
      commands(number) 
     end

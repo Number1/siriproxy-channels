@@ -155,26 +155,41 @@ def controls(var)
     
     if var == "tv" 
         
-        command = "GoToLiveTV"
+        commands("GoToLiveTV")
     end
     if var == "media center"
-        command = "Menu"
+        commands("Menu")
     end
-    base = "http://192.168.0.3:9080/xml/"
+    if var == "music"
+    command = ["GoToMusic", "NavRight", "NavRight", "NavDown", "Play" ]
+        x = 0
+        while x< command.length
+            commands(command[x])
+            x = x + 1
+        end
+      end
     
-    response = HTTParty.get("#{base}login?un=mce&pw=8u88aD0g")
-    
-    tokens = response["loginresponse"]
-    tokens = tokens["token"]
-    tokens = tokens.to_s
-    
-    uri = URI("#{base}sendremotekey/#{command}?token=#{tokens}")
-    
-    Net::HTTP.start(uri.host, uri.port) do |http|
-        request = Net::HTTP::Get.new uri.request_uri
-        response = http.request request# Net::HTTPResponse object
-    end
+end
 
+def commands(command)
+        
+        
+        base = "http://192.168.0.3:9080/xml/"
+        
+        response = HTTParty.get("#{base}login?un=mce&pw=8u88aD0g")
+        
+        tokens = response["loginresponse"]
+        tokens = tokens["token"]
+        tokens = tokens.to_s
+        
+        uri = URI("#{base}sendremotekey/#{command}?token=#{tokens}")
+        
+        Net::HTTP.start(uri.host, uri.port) do |http|
+            request = Net::HTTP::Get.new uri.request_uri
+            response = http.request request# Net::HTTPResponse object
+        end
+        
+        
 
 
 request_completed 

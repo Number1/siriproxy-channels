@@ -14,7 +14,7 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
     attr_accessor :episode_prefix
     
     def initialize(config = {})
-        self.ip = config["host"]
+        self.ip = '192.168.0.3'
         self.episode_prefix = config["episode prefix"]
         self.image_prefix = config["image_prefix"]
         #if you have custom configuration options, process them here!

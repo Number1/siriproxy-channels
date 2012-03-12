@@ -11,7 +11,7 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
         
         #if you have custom configuration options, process them here!
     end
-    self.ip = config['host']
+    self.ip = '192.168.0.3'
     tempo = Time.new
     number = 0
     word = ""

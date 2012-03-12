@@ -92,7 +92,7 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
             end
 
         
-        url = episode_prefix + channel_id + '_' + current_time.strftime("%Y-%m-%d_%HX%M")
+        url = $episode_prefix + channel_id + '_' + current_time.strftime("%Y-%m-%d_%HX%M")
         get_info = HTTParty.get(url).body
         show_info = JSON.parse(get_info)
         

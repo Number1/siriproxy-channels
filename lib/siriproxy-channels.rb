@@ -95,7 +95,7 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
         
         url = $episode_prefix + channel_id + '_' + current_time.strftime("%Y-%m-%d_%HX%M")
         get_info = HTTParty.get(url).body
-        show_info = JSON.parse(get_info)
+        show = JSON.parse(get_info)
         
             if show['title'].nil?
                 #didn't find info playing about the current show
@@ -124,7 +124,7 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
         
         answer_content << SiriAnswerLine.new(show['programDescription']) unless show['programDescription'].nil?
             
-        answer = SiriAnswer.new(channel[0][:name], answer_content)
+        answer = SiriAnswer.new(answer_content)
             
         object.views << SiriAnswerSnippet.new([answer])
             

@@ -9,4 +9,4 @@
     - name: 'Channels'
       git: 'git://github.com/Number1/siriproxy-channels.git'
       host: '192.168.0.3'
-      		
+      episode_prefix: 'http://tvlistings.aol.com/episodes/'		

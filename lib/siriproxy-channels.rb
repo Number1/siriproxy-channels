@@ -7,6 +7,7 @@ require 'httparty'
 require 'json'
 class SiriProxy::Plugin::Channels < SiriProxy::Plugin
     def initialize(config = {})
+        $ip = config['host']
         #if you have custom configuration options, process them here!
     end
     
@@ -191,7 +192,7 @@ end
 def commands(command)
         
         
-        base = "http://192.168.0.3:9080/xml/"
+        base = "#{$ip}:9080/xml/"
         
         response = HTTParty.get("#{base}login?un=mce&pw=8u88aD0g")
         

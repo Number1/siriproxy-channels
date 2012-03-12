@@ -9,6 +9,10 @@ require 'json'
 
 class SiriProxy::Plugin::Channels < SiriProxy::Plugin
     
+    attr_accessor :host
+    attr_accessor :image_prefix
+    attr_accessor :episode_prefix
+    
     def initialize(config = {})
         self.ip = config["host"]
         self.episode_prefix = config["episode prefix"]

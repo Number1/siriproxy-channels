@@ -11,11 +11,11 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
     
     
     def initialize(config = {})
-        self.host = config['host']
+        $ip = config['host']
         #if you have custom configuration options, process them here!
     end
     
-    $ip = '192.168.0.3'
+    #$ip = '192.168.0.3'
     $episode_prefix = 'http://tvlistings.aol.com/episodes/'
     $image_prefix = 'http://media.i.tv.s3.amazonaws.com/channels/black/46x35/'
     number = 0

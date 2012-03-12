@@ -11,7 +11,7 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
     
     
     def initialize(config = {})
-        self.ip = config['host']
+        self.host = config['host']
         #if you have custom configuration options, process them here!
     end
     

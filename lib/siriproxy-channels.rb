@@ -118,9 +118,9 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
             
         object.make_root(last_ref_id)
             
-        answer_content = SiriAnswerLine.new(show['title'])
+        answer_content[0] = SiriAnswerLine.new(show['title'])
         
-        answer_content << SiriAnswerLine.new(show['programDescription']) unless show['programDescription'].nil?
+        answer_content[1] = SiriAnswerLine.new(show['programDescription']) unless show['programDescription'].nil?
             
         answer = SiriAnswer.new(answer_content)
             

@@ -119,8 +119,8 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
         object.make_root(last_ref_id)
             
         answer = SiriAnswer.new("Now Playing: ", [SiriAnswerLine.new('logo', $image_prefix + channel_id + '.png'),
-                                SiriAnswerLine.new(show['title'])])
-        answer << SiriAnswerLine.new(show['programDescription']) unless show['programDescription'].nil?
+                                SiriAnswerLine.new(show['title']), SiriAnswerLine.new(show['programDescription'])])
+       
             
         object.views << SiriAnswerSnippet.new([answer])
             

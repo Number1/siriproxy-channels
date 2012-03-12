@@ -7,10 +7,11 @@ require 'httparty'
 require 'json'
 class SiriProxy::Plugin::Channels < SiriProxy::Plugin
     def initialize(config = {})
-        self.ip = config['host']
+        
+        
         #if you have custom configuration options, process them here!
     end
-    
+    self.ip = config['host']
     tempo = Time.new
     number = 0
     word = ""

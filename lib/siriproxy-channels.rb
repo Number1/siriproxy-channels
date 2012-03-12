@@ -64,7 +64,8 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
 
     def channelCheck(number)
         
-        tempo = Time.new
+        t = Time.new
+        current_time = Time.local(t.year, t.month, t.day, t.hour, t.min/30*30).getutc
         searching = true
         attempts = 0
         

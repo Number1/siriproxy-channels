@@ -118,19 +118,14 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
             
         object.make_root(last_ref_id)
             
-        answer_content = ['', '']
-        
-        answer_content[0] = SiriAnswerLine.new(show['title'])
-        
-        answer_content[1] = SiriAnswerLine.new(show['programDescription']) unless show['programDescription'].nil?
-            
-        answer = SiriAnswer.new(answer_content)
+        answer = SiriAnswer.new(show['title'])
             
         object.views << SiriAnswerSnippet.new([answer])
             
         send_object object
             
         response = ask "Would you like to watch #{show['title']}"
+        
         if (response =~ /yes/i)
             
             change_channel(number)

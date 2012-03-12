@@ -110,9 +110,9 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
         end    
             
     if number <= 69 && number >= 65
-            say "You are a fool.  Your broke ass doesn't get this channel"
+            say "You are a fool.  Your broke ass doesn't get channel #{number}"
     else
-        say "Here is what's playing:"
+        say "Here is what's playing on channel #{number}:"
         
         object = SiriAddViews.new
             

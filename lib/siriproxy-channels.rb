@@ -8,14 +8,15 @@ require 'json'
 
 
 class SiriProxy::Plugin::Channels < SiriProxy::Plugin
+    
     def initialize(config = {})
-        self.ip = config['host']
-        self.episode_prefix = config['episode prefix']
-        self.image_prefix = config['image_prefix']
+        self.ip = config["host"]
+        self.episode_prefix = config["episode prefix"]
+        self.image_prefix = config["image_prefix"]
         #if you have custom configuration options, process them here!
     end
     
-    tempo = Time.new
+    
     number = 0
     word = ""
     

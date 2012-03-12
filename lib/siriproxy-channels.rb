@@ -5,14 +5,19 @@ require 'open-uri'
 require 'pp'
 require 'httparty'
 require 'json'
+
+
 class SiriProxy::Plugin::Channels < SiriProxy::Plugin
+    
+    
     def initialize(config = {})
-        
         
         #if you have custom configuration options, process them here!
     end
+    
     $ip = '192.168.0.3'
-    tempo = Time.new
+    $episode_prefix = 'http://tvlistings.aol.com/episodes/'
+    $image_prefix = 'http://media.i.tv.s3.amazonaws.com/channels/black/46x35/'
     number = 0
     word = ""
     
@@ -60,7 +65,8 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
     def channelCheck(number)
         
         tempo = Time.new
-        
+        searching = true
+        attempts = 0
         
    h = [0, 0, 10780, 10839, 0, 10603, 73442, 21343, 10734, 63705,
         10535, 63823, 10659, 32892, 11069, 46256, 22130, 23325, 
@@ -73,54 +79,75 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
         10986, 11218, 18511, 11066, 17098, 11097, 10269, 10051, 
         10093, 11006, 12510, 18151, 10161, 10162, 10380]
         
-        channel = h[number]
+        $episode_prefix = h[number].to_s
         
-        uri = "http://tvlistings.zap2it.com/tvlistings/ZCSGrid.do?stnNum=#{channel}&channel=#{number}"
-        doc = Nokogiri::HTML(open(uri))
+        while searching do
+            
+            #die if we've tried too many times
+            if attempts == 10
+                say "Sorry, but I couldn't find anything."
+                request_completed
+                
+                return
+            end
+
         
+        url = episode_prefix + channel_id + '_' + current_time.strftime("%Y-%m-%d_%HX%M")
+        get_info = HTTParty.get(url).body
+        show_info = JSON.parse(get_info)
         
-        channel1 = doc.css("h1").map do |status|
-            status.text.strip
-        end
+            if show['title'].nil?
+                #didn't find info playing about the current show
+                #so go back a half hour until
+                #we find valid info from the start of the show
+                current_time = current_time - (30 * 60)
+                attempts += 1
+                else
+                searching = false
+            end
+            
+        end    
+            
+    if number <= 69 && number >= 65
+            say "You are a fool.  Your broke ass doesn't get this channel"
+    else
+        say "Here is what's playing:"
         
-       program = doc.css('a[id="rowTitle1"]').map do |prog1|
-            prog1.text.strip
-        end
-        episode = doc.css('li[id="row1-1"] a[class="zc-ssl-pg-ep"]').map do |ep|
-            ep.text.strip
-        end
+        object = SiriAddViews.new
+            
+        object.make_root(last_ref_id)
+            
+        answer_content = Array.new(
+                         SiriAnswerLine.new('logo', $image_prefix + channel_id + '.png'),
+                         SiriAnswerLine.new(show['title']))
         
-        if (tempo.min >= 30 && tempo.min <=55)
-            program1=program[2]
-        end
-        if
-            program1=program[1]
-        end
-        
-        channel2=channel1[0]
-        
-        episode1 = episode[0]
-        if number <= 69 && number >= 65
-            say "You are a fool.  Your broke ass doesn't get #{channel2}"
-        else
-        say "#{program1}: #{episode1} is playing on #{channel2}, channel #{number}"
-        response = ask "Would you like to watch #{program1}"
+        answer_content << SiriAnswerLine.new(show['programDescription']) unless show['programDescription'].nil?
+            
+        answer = SiriAnswer.new(channel[0][:name], answer_content)
+            
+        object.views << SiriAnswerSnippet.new([answer])
+            
+        send_object object
+            
+        response = ask "Would you like to watch #{show['title']}"
         if (response =~ /yes/i)
+            
             change_channel(number)
             
-            
             else
+            
             say "That is some bullshit"
         end
-        end
+    end
         request_completed
     end
-def change_channel(number)
+
+    def change_channel(number)
     x = 0
     say "I'm changing the channel to #{number}."
     
     chan_str = number.to_s.split('')
-    base = "#{$ip}:9080/xml/"
+    base = "#{#ip}:9080/xml/"
     
     response = HTTParty.get("#{base}login?un=mce&pw=8u88aD0g")
     
@@ -193,7 +220,7 @@ end
 def commands(command)
         
         
-        base = "#{self.ip}:9080/xml/"
+        base = "#{#ip}:9080/xml/"
         
         response = HTTParty.get("#{base}login?un=mce&pw=8u88aD0g")
         

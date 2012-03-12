@@ -80,8 +80,8 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
         10986, 11218, 18511, 11066, 17098, 11097, 10269, 10051, 
         10093, 11006, 12510, 18151, 10161, 10162, 10380]
         
-       channel_id = h[number].to_s
-        
+       channel_id = h[number]
+        channel_id = channel_id.to_s
         while searching do
             
             #die if we've tried too many times

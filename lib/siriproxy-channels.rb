@@ -8,10 +8,11 @@ require 'json'
 
 
 class SiriProxy::Plugin::Channels < SiriProxy::Plugin
-    
+    attr_accessor :ip
     
     def initialize(config = {})
-        $ip = config['host']
+        self.ip = config['host']
+        
         #if you have custom configuration options, process them here!
     end
     

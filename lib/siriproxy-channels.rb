@@ -11,7 +11,7 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
         
         #if you have custom configuration options, process them here!
     end
-    self.ip = '192.168.0.3'
+    $ip = '192.168.0.3'
     tempo = Time.new
     number = 0
     word = ""
@@ -120,7 +120,7 @@ def change_channel(number)
     say "I'm changing the channel to #{number}."
     
     chan_str = number.to_s.split('')
-    base = "#{self.ip}:9080/xml/"
+    base = "#{$ip}:9080/xml/"
     
     response = HTTParty.get("#{base}login?un=mce&pw=8u88aD0g")
     

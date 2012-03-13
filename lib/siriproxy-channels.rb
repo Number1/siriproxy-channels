@@ -193,6 +193,7 @@ def controls(var)
         commands("GoToLiveTV")
     end
     if var == "menu"
+        say "Going to main menu"
         commands("Menu")
     end
     if var == "music"

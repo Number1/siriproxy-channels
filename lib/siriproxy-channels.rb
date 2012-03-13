@@ -121,8 +121,8 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
             
         object.make_root(last_ref_id)
             
-        answer_content = Array.new("Now Playing: ", [SiriAnswerLine.new('logo', self.image_prefix + channel_id + '.png'),
-                                SiriAnswerLine.new(show['title'])])
+        answer_content = Array.new("Now Playing: ", SiriAnswerLine.new('logo', self.image_prefix + channel_id + '.png'),
+                                SiriAnswerLine.new(show['title']))
        answer_content << SiriAnswerLine.new(show['programDescription']) unless show['programDescription'].nil?
             
         

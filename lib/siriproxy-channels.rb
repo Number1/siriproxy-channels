@@ -10,16 +10,17 @@ require 'json'
 class SiriProxy::Plugin::Channels < SiriProxy::Plugin
     attr_accessor :ip
     attr_accessor :episode_prefix
-   
+    attr_accessor :image_prefix
     def initialize(config = {})
         self.ip = config['host']
         self.episode_prefix = config['episode_prefix']
+        self.image_prefix = config['image_prefix']
         #if you have custom configuration options, process them here!
     end
     
     #$ip = '192.168.0.3'
     #$episode_prefix = 'http://tvlistings.aol.com/episodes/'
-    $image_prefix = 'http://media.i.tv.s3.amazonaws.com/channels/black/46x35/'
+    #$image_prefix = 'http://media.i.tv.s3.amazonaws.com/channels/black/46x35/'
     number = 0
     word = ""
     
@@ -120,7 +121,7 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
             
         object.make_root(last_ref_id)
             
-        answer = SiriAnswer.new("Now Playing: ", [SiriAnswerLine.new('logo', $image_prefix + channel_id + '.png'),
+        answer = SiriAnswer.new("Now Playing: ", [SiriAnswerLine.new('logo', self.image_prefix + channel_id + '.png'),
                                 SiriAnswerLine.new(show['title']), SiriAnswerLine.new(show['programDescription'])])
        
             

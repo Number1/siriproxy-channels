@@ -125,7 +125,7 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
                                 SiriAnswerLine.new(show['title'])])
        answer_content << SiriAnswerLine.new(show['programDescription']) unless show['programDescription'].nil?
             
-        object.views << SiriAnswerSnippet.new([answer])
+        
             
          answer = SiriAnswer.new(answer_content)
         

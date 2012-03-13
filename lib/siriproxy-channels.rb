@@ -121,12 +121,16 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
             
         object.make_root(last_ref_id)
             
-        answer = SiriAnswer.new("Now Playing: ", [SiriAnswerLine.new('logo', self.image_prefix + channel_id + '.png'),
-                                SiriAnswerLine.new(show['title']), SiriAnswerLine.new(show['programDescription'])])
-       
+        answer_content = Array.new("Now Playing: ", [SiriAnswerLine.new('logo', self.image_prefix + channel_id + '.png'),
+                                SiriAnswerLine.new(show['title'])])
+       answer_content << SiriAnswerLine.new(show['programDescription']) unless show['programDescription'].nil?
             
         object.views << SiriAnswerSnippet.new([answer])
             
+         answer = SiriAnswer.new(answer_content)
+        
+        object.views << SiriAnswerSnippet.new([answer])
+        
         send_object object
             
         response = ask "Would you like to watch #{show['title']}"

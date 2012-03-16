@@ -146,10 +146,6 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
                     do |number1|
                    number = number1.to_i
                    channelCheck(number)
-)
-             
-            channelCheck(number)
-            
             else
             
             say "Good idea"

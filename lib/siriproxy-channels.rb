@@ -148,8 +148,6 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
                             
                             channel = ask "Which channel?"
                             
-                            channel = channel.to_s
-                            
                             channelCheck(channel)
                             
                     end

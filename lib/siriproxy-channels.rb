@@ -142,6 +142,12 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
             
             change_channel(number)
             
+            elsif
+            
+            (response =~ /number /i)
+             
+            channelCheck(number)
+            
             else
             
             say "Good idea"

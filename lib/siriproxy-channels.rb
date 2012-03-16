@@ -149,7 +149,8 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
                             channel = ask "Which channel?"
                             
                             channelCheck(channel)
-                            
+                     else
+                            say "Good chioce."
                     end
         end
     end

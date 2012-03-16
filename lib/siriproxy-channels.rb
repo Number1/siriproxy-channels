@@ -147,7 +147,7 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
                     if (response =~ /yes/i)
                             
                             number = ask "Which channel?"
-                            number = integer(number)
+                            number = number.to_i
                             channelCheck(number)
                      else
                             say "Good chioce."

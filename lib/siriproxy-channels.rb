@@ -146,6 +146,7 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
                     
                    number = number1.to_i
                    channelCheck(number)
+            end
             else
             
             say "Good idea"

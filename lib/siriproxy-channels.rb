@@ -142,14 +142,17 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
             
             change_channel(number)
             
-            elsif (response =~ /on channel ([0-9,]*[0-9])/i do |number1|)
-                    
-                   number = number1.to_i
-                   channelCheck(number)
-            end
             else
-            
-            say "Good idea"
+                response = ask "Should I check another channel?"
+                    if (response =~ /yes/i)
+                            
+                            channel = ask "Which channel?"
+                            
+                            channel = channel.to_s
+                            
+                            channelCheck(channel)
+                            
+                    end
         end
     end
         request_completed

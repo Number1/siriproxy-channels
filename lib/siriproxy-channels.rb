@@ -150,7 +150,7 @@ class SiriProxy::Plugin::Channels < SiriProxy::Plugin
                             number = number.to_i
                             channelCheck(number)
                      else
-                            say "Good chioce."
+                            say "Good choice."
                     end
         end
     end
